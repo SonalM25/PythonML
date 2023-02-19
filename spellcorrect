@@ -1,0 +1,108 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPumWdgXbjOn2GtBTY6IMhq",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/SonalM25/PythonML/blob/main/spellcorrect\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PUoKiaSYyunN",
+        "outputId": "f2d38d2f-8c26-40df-882a-ec96917a81e2"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/\n",
+            "Collecting pyspellchecker==0.5.6\n",
+            "  Downloading pyspellchecker-0.5.6-py2.py3-none-any.whl (2.5 MB)\n",
+            "\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m2.5/2.5 MB\u001b[0m \u001b[31m25.1 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\n",
+            "\u001b[?25hInstalling collected packages: pyspellchecker\n",
+            "Successfully installed pyspellchecker-0.5.6\n"
+          ]
+        }
+      ],
+      "source": [
+        "!pip install pyspellchecker==0.5.6"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "spellcorrector\n"
+      ],
+      "metadata": {
+        "id": "bEdJLj8ly34_"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from spellchecker import SpellChecker\n",
+        "\n",
+        "spell= SpellChecker()\n",
+        "\n",
+        "correct_words=[]\n",
+        "def spell_correction(text):\n",
+        "  misSpelled_words = spell.unknown(text)\n",
+        "  for each_word in text:\n",
+        "    if each_word in misSpelled_words:\n",
+        "        right_word = spell.correction(each_word)\n",
+        "        correct_words.append(right_word)\n",
+        "    else:\n",
+        "        correct_words.append(each_word)\n",
+        "  correct_spelling = ' '.join(correct_words)\n",
+        "  return correct_spelling\n",
+        "        \n",
+        "\n",
+        "      \n",
+        "data=input('enter data: ')\n",
+        "\n",
+        "for i in data:\n",
+        "  print(spell_correction(i))"
+      ],
+      "metadata": {
+        "id": "zqVn0MBftXIs"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "ngiGniaExCWD"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
